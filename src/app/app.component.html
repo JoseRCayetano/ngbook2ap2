@@ -1,3 +1,23 @@
-<h1>
-  {{title}}
-</h1>
+<form class="ui large form segment">
+  <h3 class="ui header">Add a link</h3>
+
+  <div class="field">
+    <label for="tittle">Tittle:</label>
+    <input type="text" name="tittle" #newtitle>
+     <!-- 
+       Con # angular bindea el input a una variable local.
+       Son llamadas resolve.
+       newtittle es ahora un objeto de tipo HTMLInputElement que representa este input elemento DOM.
+       Al ser un objeto podemos obtener su valor con newtitle.value
+     -->
+  </div>
+  <div class="field">
+    <label for="link">Link: </label>
+    <input name="link" #newlink>
+  </div>
+  <button (click)="addArticle(newtitle,newlink)" class="ui positive right floated button">Submit Link</button>
+</form>
+
+<div class="ui grid posts">
+  <app-article *ngFor="let article of sortedArticles()" [article]="article"></app-article>
+</div>
